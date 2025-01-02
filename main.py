@@ -4,7 +4,6 @@ import subprocess
 from datetime import datetime
 
 def log_debug(message):
-    """Log messages with a timestamp."""
     print(f"{datetime.now()} - {message}")
 
 def run_streams():
