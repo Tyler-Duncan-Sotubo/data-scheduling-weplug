@@ -1,8 +1,0 @@
-{
-    "build": {
-        "dockerfilePath": "Dockerfile"
-    },
-    "start": {
-        "cmd": "python main.py"
-    }
-}
