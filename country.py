@@ -164,16 +164,3 @@ def fetch_and_insert_data():
         print(f"Error during data fetch and insert: {e}")
     finally:
         conn.close()
-
-# Schedule the task to run every 24 hours
-def schedule_task():
-    schedule.every(24).hours.do(fetch_and_insert_data)
-    print("Scheduled task to run every 24 hours.")
-
-    while True:
-        schedule.run_pending()
-        time.sleep(1)
-
-# Main Execution
-if __name__ == "__main__":
-    fetch_and_insert_data()

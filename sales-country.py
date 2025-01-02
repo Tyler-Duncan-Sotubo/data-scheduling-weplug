@@ -163,15 +163,3 @@ def fetch_and_insert_data():
     finally:
         conn.close()
 
-# Schedule the task to run every 10 days
-def schedule_task():
-    schedule.every(10).days.do(fetch_and_insert_data)
-    print("Scheduled task to run every 10 days.")
-
-    while True:
-        schedule.run_pending()
-        time.sleep(1)
-
-# Main Execution
-if __name__ == "__main__":
-    fetch_and_insert_data()
