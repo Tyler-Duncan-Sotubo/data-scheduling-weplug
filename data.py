@@ -43,6 +43,7 @@ RELEASES = [
     {"id": "cm4g4oy6u0013uq17zoe4gci7",  'release_id': "2387511"},
     {"id": "cm4l8ku98001cuq17bn89rmk8", 'release_id': "2394300"},
     {"id": "cm4nepbnj001iuq173s13l92h", 'release_id': "2398609"},
+    {"id": "clzptjmzh000090eabnx1w2wq", 'release_id': "2038570"},
 ]
 
 COUNTRY_MAPPING = [
