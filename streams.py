@@ -117,7 +117,7 @@ def transform_data(api_data, audio_id):
     return transformed_data
 
 # Fetch data from API and insert into the database
-def fetch_and_insert_data():
+def fetch_and_insert_data_store_streams():
     conn = connect_to_database()
     if not conn:
         print("Unable to connect to the database.")
@@ -159,3 +159,4 @@ def fetch_and_insert_data():
         print(f"Error during data fetch and insert: {e}")
     finally:
         conn.close()
+
