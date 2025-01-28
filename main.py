@@ -1,13 +1,14 @@
 import schedule
 import time
 import subprocess
-from datetime import datetime
-from streams import fetch_and_insert_data_store_streams
-from country import fetch_and_insert_data_country_streams
 
-def run_streams():
-    fetch_and_insert_data_store_streams()
-    fetch_and_insert_data_country_streams()
+from streams import fetch_and_insert_data_store_streams, fetch_and_insert_data_country_streams
+
+# Define functions for running sales scripts
+def run_sales_scripts():
+    run_sales_stores()
+    run_sales_month()
+    run_sales_country()
 
 def run_sales_stores():
     try:
@@ -27,15 +28,21 @@ def run_sales_country():
     except subprocess.CalledProcessError as e:
         pass
 
-# Scheduling the functions
+# Define function to run data streams
+def run_streams():
+    fetch_and_insert_data_store_streams()
+    fetch_and_insert_data_country_streams()
+
+# Schedule tasks
 schedule.every(24).hours.do(run_streams)  # Run streams every 24 hours
-schedule.every(15).days.do(run_sales_stores)  # Run sales-stores every 15 days (twice a month)
-schedule.every(15).days.do(run_sales_month)  # Run sales-month every 15 days (twice a month)
-schedule.every(15).days.do(run_sales_country)  # Run sales-country every 15 days (twice a month)
+schedule.every(15).days.do(run_sales_scripts)  # Run sales scripts every 15 days (twice a month)
 
 if __name__ == "__main__":
-    # Run the first execution immediately on startup
+    # Run streams immediately on startup
     run_streams()
+
+    # Run sales scripts immediately on startup
+    run_sales_scripts()
 
     # Start the schedule
     while True:
